@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="669dp"
+        android:gravity="center"
+        android:text="Enter your details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/textView2"
+        android:layout_margin="50dp"
+        android:layout_marginTop="50dp"
+        android:hint="Email or username"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="10dp"
+        android:drawablePadding="20dp"
+        />
+
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/username"
+        android:layout_margin="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="900dp"
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="93dp" />
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="-350dp"
+        android:backgroundTint="#1CB0F6"
+        android:scrollbarSize="10dp"
+        android:text="SIGN IN"
+        android:textSize="16sp"
+        app:iconSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346" />
+
+    <TextView
+        android:id="@+id/forgotpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signin"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="258dp"
+        android:layout_marginBottom="393dp"
+        android:text="FORGOT PASSWORD"
+        android:textColor="#1CB0F6"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signin"
+        tools:ignore="MissingConstraints" />
+
+
+    <!--        android:drawableLeft="@drawable/search"-->
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnGoogle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:layout_marginEnd="100dp"-->
+<!--        android:layout_marginBottom="-30dp"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        android:scrollbarSize="10dp"-->
+<!--        android:text="SIGN IN WITH GOOGLE"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        app:iconSize="10dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/forgotpass"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/forgotpass"-->
+<!--        app:layout_constraintVertical_bias="0.26"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnFacebook"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:layout_gravity="center_horizontal"-->
+
+
+<!--        android:layout_marginStart="100dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="100dp"-->
+<!--        android:layout_marginBottom="-10dp"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        android:scrollbarSize="10dp"-->
+
+<!--        android:text="SIGN IN WITH FACEBOOK"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        app:iconSize="10dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btnGoogle"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/textView2"-->
+<!--        app:layout_constraintHorizontal_bias="0.12"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/forgotpass"-->
+<!--        app:layout_constraintVertical_bias="0.35000002"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnApple"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginStart="100dp"-->
+<!--        android:layout_marginTop="200dp"-->
+<!--        android:layout_marginEnd="100dp"-->
+<!--        android:layout_marginBottom="-50dp"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        android:scrollbarSize="10dp"-->
+<!--        android:text="SIGN IN WITH APPLE"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        app:iconSize="10dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btnFacebook"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.52"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnGoogle"-->
+<!--        app:layout_constraintVertical_bias="0.52"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="322dp"
+
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="15dp"
+        android:text="By signing in to Duolingo, you agree to our Terms and Privacy Policy."
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="0.9"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
