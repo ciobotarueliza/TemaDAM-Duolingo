@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register4"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.04">
+
+        <TextView
+            android:id="@+id/intrebareParola"
+            android:layout_width="125dp"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Creeaza o parola"
+            app:layout_constraintBottom_toTopOf="@+id/etParola"
+            app:layout_constraintEnd_toEndOf="@id/btnProfil"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.732" />
+
+        <EditText
+            android:id="@+id/etParola"
+            android:layout_width="375dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="28dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Parola"
+            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawablePadding="20dp"
+
+            android:padding="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.16" />
+
+        <Button
+            android:id="@+id/btnProfil"
+            android:layout_width="376dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#7AC70C"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="CREEAZa PROFIL"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.275" />
+
+        <TextView
+            android:id="@+id/infoJos"
+            android:layout_width="357dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:text="By signing in to Duolingo, you agree to our Terms and Privacy Policy."
+
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.937" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
