@@ -12,8 +12,7 @@ import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
 
-    private Button buton;
-    private final int MainActivityRequest = 100;
+    private Button btnLista;
     private EditText username;
     private EditText password;
 
@@ -25,18 +24,14 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        buton = findViewById(R.id.signin);
-
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         //receiver_msg = (TextView)findViewById(R.id.username);
         //receiver_msg2 = (TextView)findViewById(R.id.password);
 
-        Intent intent = getIntent();
-
-        String str = intent.getStringExtra("message_key");
-        String str2 = intent.getStringExtra("message_key2");
-
+        Intent intent1 = getIntent();
+        String str = intent1.getStringExtra("message_key");
+        String str2 = intent1.getStringExtra("message_key2");
 
 //        receiver_msg.setText(str);
 //        receiver_msg2.setText(str2);
@@ -44,16 +39,19 @@ public class Login extends AppCompatActivity {
         username.setText(str);
         password.setText(str2);
 
-
-        buton.setOnClickListener(new View.OnClickListener() {
+        btnLista = (Button) findViewById(R.id.signin);
+        btnLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Lista_cursuri.class);
-                startActivity(intent);
-
+                openLista();
             }
-
         });
+
+    }
+
+    public void openLista() {
+        Intent intent = new Intent(Login.this,Lista_cursuri.class);
+        startActivity(intent);
     }
 
 

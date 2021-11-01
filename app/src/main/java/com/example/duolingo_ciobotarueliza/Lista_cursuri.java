@@ -1,15 +1,18 @@
 package com.example.duolingo_ciobotarueliza;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Lista_cursuri extends AppCompatActivity {
 
@@ -21,14 +24,32 @@ public class Lista_cursuri extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cursuri);
 
-        meniuAdapter = new MeniuAdapter(getCursuri());
-        lista_cursuri = findViewById(R.id.lista_cursuri);
-        lista_cursuri.setAdapter((ListAdapter) meniuAdapter);
+        lista_cursuri = findViewById(R.id.listaCursuri);
 
-        lista_cursuri.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        meniuAdapter = new MeniuAdapter(getCursuri());
+
+        lista_cursuri.setAdapter(meniuAdapter);
+
+//        lista_cursuri.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Random rnd = new Random(2);
+//                int rnd_int = rnd.nextInt();
+//                if(rnd_int%2==0){
+//                    meniuAdapter.update_list(getCursuri());
+//                }else{
+//                    meniuAdapter.update_list(getCursuri2());
+//                }
+//            }
+//        });
+
+        lista_cursuri.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                meniuAdapter.update_list(getCursuri());
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+              //   meniuAdapter.getItem(position);
+                Toast.makeText(Lista_cursuri.this,  meniuAdapter.getItem(position).toString(), Toast.LENGTH_LONG).show();
+
+                return false;
             }
         });
     }
@@ -39,6 +60,20 @@ public class Lista_cursuri extends AppCompatActivity {
         lst.add(new Curs("Engleza", "avansat", 120));
         lst.add(new Curs("Germana", "intermediar", 100));
         lst.add(new Curs("Spaniola", "incepator", 110));
+        lst.add(new Curs("Japoneza", "intermediar", 120));
+        lst.add(new Curs("Italiana", "intermediar", 150));
+        lst.add(new Curs("Franceza", "incepator", 110));
+        lst.add(new Curs("Japoneza", "intermediar", 120));
+        lst.add(new Curs("Italiana", "intermediar", 150));
+        lst.add(new Curs("Franceza", "incepator", 110));
         return lst;
     }
+
+//    private List<Curs> getCursuri2(){
+//        List<Curs> lst = new ArrayList<>();
+//        lst.add(new Curs("Japoneza", "intermediar", 120));
+//        lst.add(new Curs("Italiana", "intermediar", 150));
+//        lst.add(new Curs("Franceza", "incepator", 110));
+//        return lst;
+//    }
 }

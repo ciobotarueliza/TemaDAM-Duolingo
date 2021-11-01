@@ -58,6 +58,8 @@ public class RegisterFinal extends AppCompatActivity {
 
                         etVarsta.setVisibility(View.INVISIBLE);
                         etNume.setVisibility(View.VISIBLE);
+                    }else{
+                        clickcount = clickcount - 1;  //ca inca nu e valid si sa nu treaca la urmatorul
                     }
                 }
 
@@ -69,6 +71,8 @@ public class RegisterFinal extends AppCompatActivity {
 
                         etNume.setVisibility(View.INVISIBLE);
                         etEmail.setVisibility(View.VISIBLE);
+                    }else{
+                        clickcount = clickcount - 1;  //ca inca nu e valid si sa nu treaca la urmatorul
                     }
 
                 }
@@ -81,6 +85,8 @@ public class RegisterFinal extends AppCompatActivity {
 
                         etEmail.setVisibility(View.INVISIBLE);
                         etParola.setVisibility(View.VISIBLE);
+                    }else{
+                        clickcount = clickcount - 1;  //ca inca nu e valid si sa nu treaca la urmatorul
                     }
 
                 }
