@@ -18,23 +18,23 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnRegister;
     private Button btnLogin;
-
-
-
     private final int MainActivityRequest = 100;
-   // private TextView text;
+
+    private TextView username;
+    private TextView password;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //MaterialButton btn = (MaterialButton) findViewById(R.id.btn);
-
-       // Log.v("lifecycle", "onCreate");
 
         btnLogin= (Button) findViewById(R.id.login);
-        //text = findViewById(R.id.textView);
+
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Register.class);
+                Intent intent = new Intent(MainActivity.this, RegisterFinal.class);
                 //startActivity(intent);
                 startActivityForResult(intent,MainActivityRequest);
 
@@ -57,30 +57,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    Persoana persoana;
     public void openLogin() {
-        if(persoana != null){
 
-            String str = persoana.getNume();
-            String str2 = persoana.getParola();
+        String str = username.getText().toString();
+        String str2 = password.getText().toString();
 
-            Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(MainActivity.this, Login.class);
 
-            intent.putExtra("message_key", str);
-            intent.putExtra("message_key2", str2);
-
-
-            startActivity(intent);
-
+        intent.putExtra("message_key", str);
+        intent.putExtra("message_key2", str2);
 
         startActivity(intent);
-        }
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+
     }
 
     public void openRegister() {
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, RegisterFinal.class);
         startActivityForResult(intent,MainActivityRequest);
         //startActivity(intent);
     }
@@ -92,15 +84,13 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode==RESULT_OK){
                 if(data!=null){
                     Bundle newBundle = data.getBundleExtra("raspunsBundle");
-                    persoana = (Persoana) newBundle.getSerializable("persoana");
-                    Intent intent3 = new Intent( this, Login.class);
-                    startActivity(intent3);
-                    //text.setText(persoana.toString());
+                    Persoana persoana = (Persoana) newBundle.getSerializable("persoana");
+                    username.setText(persoana.getEmail());
+                    password.setText(persoana.getParola());
 
                 }
             }
         }
-
 
     }
 }

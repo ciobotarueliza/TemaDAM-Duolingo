@@ -17,29 +17,29 @@ public class Login extends AppCompatActivity {
     private EditText username;
     private EditText password;
 
+    //TextView receiver_msg;
+    //TextView receiver_msg2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         buton = findViewById(R.id.signin);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-//        username.setText("eliza");
-//        password.setText("eliza");
 
-
-
-//        Intent intent = new Intent();
-//        startActivityForResult(intent,MainActivityRequest);
-
-
+        username = (EditText)findViewById(R.id.username);
+        password = (EditText)findViewById(R.id.password);
+        //receiver_msg = (TextView)findViewById(R.id.username);
+        //receiver_msg2 = (TextView)findViewById(R.id.password);
 
         Intent intent = getIntent();
 
         String str = intent.getStringExtra("message_key");
         String str2 = intent.getStringExtra("message_key2");
 
+
+//        receiver_msg.setText(str);
+//        receiver_msg2.setText(str2);
 
         username.setText(str);
         password.setText(str2);
@@ -48,29 +48,13 @@ public class Login extends AppCompatActivity {
         buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Login.this, Register.class);
-//                //startActivity(intent);
-//                startActivityForResult(intent,MainActivityRequest);
+                Intent intent = new Intent(Login.this, Lista_cursuri.class);
+                startActivity(intent);
+
             }
 
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==MainActivityRequest) {
-            if(resultCode==RESULT_OK){
-                if(data!=null){
-                    Bundle newBundle = data.getBundleExtra("raspunsBundle");
-                    Persoana persoana = (Persoana) newBundle.getSerializable("persoana");
-                   // text.setText(persoana.toString());
-                      username.setText(persoana.getEmail());
-                      password.setText(persoana.getParola());
-                }
-            }
-        }
 
-
-    }
 }

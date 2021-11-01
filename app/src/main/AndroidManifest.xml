@@ -10,16 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Duolingo_CiobotaruEliza">
         <activity
-            android:name=".Register4"
+            android:name=".Lista_cursuri"
             android:exported="true" />
         <activity
-            android:name=".Register3"
-            android:exported="true" />
-        <activity
-            android:name=".Register2"
-            android:exported="true" />
-        <activity
-            android:name=".Register"
+            android:name=".RegisterFinal"
             android:exported="true" />
         <activity
             android:name=".Login"
