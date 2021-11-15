@@ -30,28 +30,51 @@ public class Lista_cursuri extends AppCompatActivity {
 
         lista_cursuri.setAdapter(meniuAdapter);
 
-//        lista_cursuri.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Random rnd = new Random(2);
-//                int rnd_int = rnd.nextInt();
-//                if(rnd_int%2==0){
-//                    meniuAdapter.update_list(getCursuri());
-//                }else{
-//                    meniuAdapter.update_list(getCursuri2());
-//                }
-//            }
-//        });
+        //https://jsonkeeper.com/b/AKRX
 
-        lista_cursuri.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+        JSONReader reader = new JSONReader();
+        Thread thread = new Thread(new Runnable() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-              //   meniuAdapter.getItem(position);
-                Toast.makeText(Lista_cursuri.this,  meniuAdapter.getItem(position).toString(), Toast.LENGTH_LONG).show();
+            public void run() {
+                reader.read("https://jsonkeeper.com/b/AKRX\n", new IResponse() {
+                    @Override
+                    public void onSucces(List<Curs> cursuri) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+//                                Toast.makeText(Lista_cursuri.this, cursuri.toString(), Toast.LENGTH_SHORT).show();
+                                meniuAdapter.update_list(cursuri);
+                                Toast.makeText(Lista_cursuri.this, cursuri.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-                return false;
+                    }
+
+                    @Override
+                    public void onError(String mesaj) {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Lista_cursuri.this, mesaj, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
             }
         });
+        thread.start();
+
+
+//        lista_cursuri.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//              //   meniuAdapter.getItem(position);
+//                Toast.makeText(Lista_cursuri.this,  meniuAdapter.getItem(position).toString(), Toast.LENGTH_LONG).show();
+//
+//                return false;
+//            }
+//        });
     }
 
 
