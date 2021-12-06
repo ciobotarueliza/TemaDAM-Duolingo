@@ -1,5 +1,7 @@
 package com.example.duolingo_ciobotarueliza;
 
+import androidx.room.Entity;
+
 import java.io.Serializable;
 
 public class Persoana implements Serializable {

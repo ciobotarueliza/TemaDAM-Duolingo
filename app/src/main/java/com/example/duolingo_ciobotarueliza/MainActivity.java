@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnRegister;
@@ -23,12 +26,29 @@ public class MainActivity extends AppCompatActivity {
     private TextView username;
     private TextView password;
 
-
+    private PersoanaDAO persoanaDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //parte baza de date
+
+        persoanaDAO= Database.getInstance(this).getDatabase().persoanaDAO();
+        List<Person> lista=getPersons();
+        //studentDAO.insert(lista.get(0),lista.get(1));
+        for(int i=0;i<lista.size();i++){
+
+            persoanaDAO.insertAll(lista.get(i));
+        }
+        List<Person> lista18=persoanaDAO.getPersoanaVarstaMaiMareDe(18);
+        Log.v("majori",lista18.toString());
+
+
+
+        ///pana aici bd
+
 
 
         btnLogin= (Button) findViewById(R.id.login);
@@ -91,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+    }
+
+
+    public List<Person> getPersons(){
+        Person persoana1 = new Person( "Eliza", "aaa", "eliza@gmail.com", 21);
+
+
+        List<Person> lista=new ArrayList<>();
+        lista.add(persoana1);
+
+        return lista;
 
     }
 }
