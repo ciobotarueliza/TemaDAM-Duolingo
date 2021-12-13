@@ -5,13 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Lista_cursuri extends AppCompatActivity {
@@ -29,6 +38,12 @@ public class Lista_cursuri extends AppCompatActivity {
         meniuAdapter = new MeniuAdapter(getCursuri());
 
         lista_cursuri.setAdapter(meniuAdapter);
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("lista cursuri"); // ca asta e unic
+        myRef.setValue(getCursuri());
+
 
         //https://jsonkeeper.com/b/AKRX
 
@@ -90,6 +105,7 @@ public class Lista_cursuri extends AppCompatActivity {
         lst.add(new Curs("Italiana", "intermediar", 150));
         lst.add(new Curs("Franceza", "incepator", 110));
         return lst;
+
     }
 
 //    private List<Curs> getCursuri2(){

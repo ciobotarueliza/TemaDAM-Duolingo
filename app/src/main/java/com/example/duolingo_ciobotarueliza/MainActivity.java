@@ -13,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +49,68 @@ public class MainActivity extends AppCompatActivity {
         }
         List<Person> lista18=persoanaDAO.getPersoanaVarstaMaiMareDe(18);
         Log.v("majori",lista18.toString());
-
-
-
         ///pana aici bd
 
+
+        //firebase
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("persoana");
+        DatabaseReference myRef2 = database.getReference("test");
+
+        myRef2.setValue("persoanaTest");
+        myRef.child("nume").setValue("eliza");
+        myRef.child("email").setValue("eliza@gmail.com");
+        myRef.child("parola").setValue("parola123");
+        myRef.child("varsta").setValue(21);
+
+        // Read from the database TEST afiseaza
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d("read", "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("fail", "Failed to read value.", error.toException());
+            }
+        });
+
+
+//        List<Persoana> list= new ArrayList <>();
+//
+////         Read from the database
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+////                String value = dataSnapshot.getValue(String.class);
+////                Log.d("read", "Value is: " + value);
+//                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+//                    Persoana pers = postSnapshot.getValue(Persoana.class);
+//                    list.add(pers);
+//                }
+//                for (int i=0;i<list.size();i++)
+//                {
+//                    Log.d("Name",list.get(i).getNume());
+//                    Log.d("Email",list.get(i).getEmail());
+//
+//                }
+//            }
+//            @Override
+//
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w("cancelled", "Failed to read value.", error.toException());
+//            }
+//        });
+        //pana aici firebase
 
 
         btnLogin= (Button) findViewById(R.id.login);
