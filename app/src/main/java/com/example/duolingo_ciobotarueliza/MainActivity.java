@@ -52,26 +52,34 @@ public class MainActivity extends AppCompatActivity {
         ///pana aici bd
 
 
-        //firebase
+        //firebase TEST pt o persoana
 
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("persoana");
+//        DatabaseReference myRef2 = database.getReference("test");
+//
+//        myRef2.setValue("persoanaTest");
+//        myRef.child("nume").setValue("eliza");
+//        myRef.child("email").setValue("eliza@gmail.com");
+//        myRef.child("parola").setValue("parola123");
+//        myRef.child("varsta").setValue(21);
+
+
+        //firebase luat din dao
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("persoana");
-        DatabaseReference myRef2 = database.getReference("test");
+        DatabaseReference myRef = database.getReference("lista persoane");
+        myRef.setValue(lista);
 
-        myRef2.setValue("persoanaTest");
-        myRef.child("nume").setValue("eliza");
-        myRef.child("email").setValue("eliza@gmail.com");
-        myRef.child("parola").setValue("parola123");
-        myRef.child("varsta").setValue(21);
 
         // Read from the database TEST afiseaza
-        myRef2.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("read", "Value is: " + value);
+                ArrayList<Person> list = (ArrayList<Person>) dataSnapshot.getValue();
+                Log.d("read", "Value is: " + list.toString());
+
             }
 
             @Override
@@ -81,35 +89,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        List<Persoana> list= new ArrayList <>();
-//
-////         Read from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-////                String value = dataSnapshot.getValue(String.class);
-////                Log.d("read", "Value is: " + value);
-//                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-//                    Persoana pers = postSnapshot.getValue(Persoana.class);
-//                    list.add(pers);
-//                }
-//                for (int i=0;i<list.size();i++)
-//                {
-//                    Log.d("Name",list.get(i).getNume());
-//                    Log.d("Email",list.get(i).getEmail());
-//
-//                }
-//            }
-//            @Override
-//
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w("cancelled", "Failed to read value.", error.toException());
-//            }
-//        });
         //pana aici firebase
 
 
@@ -179,8 +158,6 @@ public class MainActivity extends AppCompatActivity {
 
     public List<Person> getPersons(){
         Person persoana1 = new Person( "Eliza", "aaa", "eliza@gmail.com", 21);
-
-
         List<Person> lista=new ArrayList<>();
         lista.add(persoana1);
 

@@ -41,8 +41,25 @@ public class Lista_cursuri extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("lista cursuri"); // ca asta e unic
+        DatabaseReference myRef = database.getReference("lista cursuri");
         myRef.setValue(getCursuri());
+
+        // Read from the database TEST afiseaza
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                ArrayList<Curs> list = (ArrayList<Curs>)dataSnapshot.getValue();
+                Log.d("read", "Value is: " + list.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("fail", "Failed to read value.", error.toException());
+            }
+        });
 
 
         //https://jsonkeeper.com/b/AKRX
